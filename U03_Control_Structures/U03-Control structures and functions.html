@@ -226,6 +226,10 @@ class="toc-section-number">3.3</span> Include_once</a></li>
 class="toc-section-number">3.4</span> Require_once</a></li>
 <li><a href="#include-or-require" id="toc-include-or-require"><span
 class="toc-section-number">3.5</span> Include or require?</a></li>
+<li><a href="#the-__dir__-magic-constant"
+id="toc-the-__dir__-magic-constant"><span
+class="toc-section-number">3.6</span> The <code>__DIR__</code> magic
+constant</a></li>
 </ul></li>
 </ul>
             </div>
@@ -1389,6 +1393,41 @@ class="toc-section-number">3.5</span> Include or require?</a></li>
             <strong><code>_once</code></strong> should be used when our
             program has considerable dimensions and it may be the case
             that the inclusion of the file occurs several times.</p>
+            <h2 data-number="3.6" id="the-__dir__-magic-constant"><span
+            class="header-section-number">3.6</span> The
+            <code>__DIR__</code> magic constant</h2>
+            <p>PHP 5.3 introduced a new magic constant called
+            <code>__DIR__</code>. When you reference the
+            <code>__DIR__</code> inside a file, it returns the directory
+            of the file. The <code>__DIR__</code> doesn’t include a
+            trailing slash e.g., <code>/</code> or <code>\</code> except
+            it’s a root directory.</p>
+            <p>It is recommended to use this constant on includes and
+            requires because PHP scripts run relative to the current
+            path, not to the path of their own file. Using
+            <code>__DIR__</code> forces the include to happen relative
+            to their own path.</p>
+            <p>For example, in the next files structure:</p>
+            <div class="sourceCode" id="cb75"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> file1.php</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> dir/</span></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="kw">-</span><span class="at"> file2.php</span></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="kw">-</span><span class="at"> file3.php</span></span></code></pre></div>
+            <p>If <code>file2.php</code> includes <code>file3.php</code>
+            like this:</p>
+            <div class="sourceCode" id="cb76"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">`file3.php`</span><span class="ot">;</span></span></code></pre></div>
+            <p>It will work fine if you call <code>file2.php</code>
+            directly. However, if <code>file1.php</code> includes
+            <code>file2.php</code>, the current directory will be wrong
+            for <code>file2.php</code>, so file3.php cannot be included.
+            It will work fine if the include code is:</p>
+            <div class="sourceCode" id="cb77"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">`/file3.php`</span><span class="ot">;</span></span></code></pre></div>
+            <p>Note how we add the slash to the start of the file
+            name.</p>
+            <p>Therefore, it’s a good practice to use the
+            <code>__DIR__</code> constant when you include a file.</p>
         </main>
         
 
