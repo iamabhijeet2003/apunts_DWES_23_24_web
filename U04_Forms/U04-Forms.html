@@ -11,11 +11,8 @@
         div.columns{display: flex; gap: min(4vw, 1.5em);}
         div.column{flex: auto; overflow-x: auto;}
         div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-        /* The extra [class] is a hack that increases specificity enough to
-           override a similar rule in reveal.js */
-        ul.task-list[class]{list-style: none;}
+        ul.task-list{list-style: none;}
         ul.task-list li input[type="checkbox"] {
-          font-size: inherit;
           width: 0.8em;
           margin: 0 0.8em 0.2em -1.6em;
           vertical-align: middle;
@@ -187,14 +184,14 @@ class="toc-section-number">5</span> Partials</a></li>
             class="header-section-number">1.1</span> POST method</h2>
             <p>If we have this form:</p>
             <div class="sourceCode" id="cb1"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">&quot;destination.php&quot;</span><span class="ot"> method</span><span class="op">=</span><span class="st">&quot;POST&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    Name: <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;name&quot;</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    1st Surname: <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;surname1&quot;</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    2nd Surname: <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;surname2&quot;</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;submit&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Send&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;destination.php&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;POST&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    Name: <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;name&quot;</span><span class="kw">&gt;&lt;br&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    1st Surname: <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;surname1&quot;</span><span class="kw">&gt;&lt;br&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    2nd Surname: <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;surname2&quot;</span><span class="kw">&gt;&lt;br&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;submit&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;Send&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/form&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span></code></pre></div>
             <p>In the script
             <strong><code>destination.php</code></strong> we will read
             the form attributes using the <code>$_POST</code> or the
@@ -211,7 +208,7 @@ class="toc-section-number">5</span> Partials</a></li>
             <p>If we modify the example above replacing POST with
             GET:</p>
             <div class="sourceCode" id="cb3"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">&quot;destination.php&quot;</span><span class="ot"> method</span><span class="op">=</span><span class="st">&quot;GET&quot;</span><span class="dt">&gt;</span></span></code></pre></div>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;destination.php&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;GET&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
             <div class="sourceCode" id="cb4"><pre
             class="sourceCode php"><code class="sourceCode php"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">$name</span> <span class="op">=</span> <span class="va">$_GET</span>[<span class="st">&#39;name&#39;</span>]<span class="ot">;</span>  </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="va">$surname1</span> <span class="op">=</span> <span class="va">$_GET</span>[<span class="st">&#39;surname1&#39;</span>]<span class="ot">;</span> </span>
@@ -241,7 +238,7 @@ class="toc-section-number">5</span> Partials</a></li>
             a script without using a form, just by attaching the
             variables to the URL in a link.</p>
             <div class="sourceCode" id="cb5"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;test.php?name=Marta&quot;</span><span class="dt">&gt;</span>link<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span></code></pre></div>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;test.php?name=Marta&quot;</span><span class="kw">&gt;</span>link<span class="kw">&lt;/a&gt;</span> </span></code></pre></div>
             <h2 data-number="1.3"
             id="reading-some-special-form-fields"><span
             class="header-section-number">1.3</span> Reading some
@@ -250,17 +247,17 @@ class="toc-section-number">5</span> Partials</a></li>
             class="header-section-number">1.3.1</span> Reading a
             checkbox</h3>
             <div class="sourceCode" id="cb6"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">fieldset</span><span class="dt">&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">legend</span><span class="dt">&gt;</span>Please select which sports do you like<span class="dt">&lt;/</span><span class="kw">legend</span><span class="dt">&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;fieldset&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;legend&gt;</span>Please select which sports do you like<span class="kw">&lt;/legend&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;label&gt;</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        Baseball</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;checkbox&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;baseball&quot;</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;checkbox&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;baseball&quot;</span><span class="kw">&gt;&lt;br&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/label&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;label&gt;</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        Basketball</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;checkbox&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;basketball&quot;</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">fieldset</span><span class="dt">&gt;</span></span></code></pre></div>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;checkbox&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;basketball&quot;</span><span class="kw">&gt;&lt;br&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/label&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/fieldset&gt;</span></span></code></pre></div>
             <div class="sourceCode" id="cb7"><pre
             class="sourceCode php"><code class="sourceCode php"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="kw">isset</span>(<span class="va">$_REQUEST</span>[<span class="st">&#39;baseball&#39;</span>])) { … }</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="kw">isset</span>(<span class="va">$_REQUEST</span>[<span class="st">&#39;basketball&#39;</span>])) { … }</span></code></pre></div>
@@ -271,13 +268,13 @@ class="toc-section-number">5</span> Partials</a></li>
             radio button elements. Only one radio button in a group can
             be selected.</p>
             <div class="sourceCode" id="cb8"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;radio&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;html&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;fav_language&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;HTML&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;html&quot;</span><span class="dt">&gt;</span>HTML<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;radio&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;css&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;fav_language&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;CSS&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;css&quot;</span><span class="dt">&gt;</span>CSS<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;radio&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;javascript&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;fav_language&quot;</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ot">value</span><span class="op">=</span><span class="st">&quot;JavaScript&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;javascript&quot;</span><span class="dt">&gt;</span>JavaScript<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span></code></pre></div>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;radio&quot;</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;html&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;fav_language&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;HTML&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;label</span> <span class="er">for</span><span class="ot">=</span><span class="st">&quot;html&quot;</span><span class="kw">&gt;</span>HTML<span class="kw">&lt;/label&gt;&lt;br&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;radio&quot;</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;css&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;fav_language&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;CSS&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;label</span> <span class="er">for</span><span class="ot">=</span><span class="st">&quot;css&quot;</span><span class="kw">&gt;</span>CSS<span class="kw">&lt;/label&gt;&lt;br&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;radio&quot;</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;javascript&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;fav_language&quot;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ot">value=</span><span class="st">&quot;JavaScript&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;label</span> <span class="er">for</span><span class="ot">=</span><span class="st">&quot;javascript&quot;</span><span class="kw">&gt;</span>JavaScript<span class="kw">&lt;/label&gt;</span></span></code></pre></div>
             <div class="sourceCode" id="cb9"><pre
             class="sourceCode php"><code class="sourceCode php"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="va">$fav_language</span> <span class="op">=</span> <span class="va">$_REQUEST</span>[<span class="st">&#39;fav_language&#39;</span>]<span class="ot">;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$fav_language</span><span class="ot">;</span></span></code></pre></div>
@@ -286,18 +283,18 @@ class="toc-section-number">5</span> Partials</a></li>
             class="header-section-number">1.3.3</span> Simple and
             multiple SELECT</h3>
             <div class="sourceCode" id="cb10"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;cars&quot;</span><span class="dt">&gt;</span>Choose a car:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">select</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;cars&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;cars&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;volvo&quot;</span><span class="dt">&gt;</span>Volvo<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;saab&quot;</span><span class="dt">&gt;</span>Saab<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;fiat&quot;</span><span class="dt">&gt;</span>Fiat<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;audi&quot;</span><span class="dt">&gt;</span>Audi<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">select</span><span class="dt">&gt;</span></span></code></pre></div>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;label</span> <span class="er">for</span><span class="ot">=</span><span class="st">&quot;cars&quot;</span><span class="kw">&gt;</span>Choose a car:<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;select</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;cars&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;cars&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;volvo&quot;</span><span class="kw">&gt;</span>Volvo<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;saab&quot;</span><span class="kw">&gt;</span>Saab<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;fiat&quot;</span><span class="kw">&gt;</span>Fiat<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;audi&quot;</span><span class="kw">&gt;</span>Audi<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/select&gt;</span></span></code></pre></div>
             <p>Use the <strong>multiple</strong> attribute to allow the
             user to select more than one value. The PHP script will
             receive the data as an <strong>array</strong>.</p>
             <div class="sourceCode" id="cb11"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">select</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;cars&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;cars[]&quot;</span><span class="ot"> size</span><span class="op">=</span><span class="st">&quot;4&quot;</span><span class="ot"> multiple</span><span class="dt">&gt;</span></span></code></pre></div>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;select</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;cars&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;cars[]&quot;</span> <span class="er">size</span><span class="ot">=</span><span class="st">&quot;4&quot;</span> <span class="er">multiple</span><span class="kw">&gt;</span></span></code></pre></div>
             <div class="sourceCode" id="cb12"><pre
             class="sourceCode php"><code class="sourceCode php"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="va">$cars</span> <span class="op">=</span> <span class="va">$_REQUEST</span>[<span class="st">&#39;cars&#39;</span>]<span class="ot">;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">foreach</span> (<span class="va">$cars</span> <span class="kw">as</span> <span class="va">$car</span>) {</span>
@@ -305,10 +302,10 @@ class="toc-section-number">5</span> Partials</a></li>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p>We can do the same with checkbox type inputs.</p>
             <div class="sourceCode" id="cb13"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;checkbox&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;likes[]&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Sports&quot;</span><span class="dt">/&gt;</span>Sports<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;checkbox&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;likes[]&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Music&quot;</span><span class="dt">/&gt;</span>Music<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;checkbox&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;likes[]&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Reading&quot;</span><span class="dt">/&gt;</span>Reading<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;checkbox&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;likes[]&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Movies&quot;</span><span class="dt">/&gt;</span>Movies<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span></code></pre></div>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;checkbox&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;likes[]&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;Sports&quot;</span><span class="kw">/&gt;</span>Sports<span class="kw">&lt;br/&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;checkbox&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;likes[]&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;Music&quot;</span><span class="kw">/&gt;</span>Music<span class="kw">&lt;br/&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;checkbox&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;likes[]&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;Reading&quot;</span><span class="kw">/&gt;</span>Reading<span class="kw">&lt;br/&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;checkbox&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;likes[]&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;Movies&quot;</span><span class="kw">/&gt;</span>Movies<span class="kw">&lt;br/&gt;</span></span></code></pre></div>
             <p>And then, in the PHP script:</p>
             <div class="sourceCode" id="cb14"><pre
             class="sourceCode php"><code class="sourceCode php"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">empty</span>(<span class="va">$_POST</span>[<span class="st">&#39;likes&#39;</span>])) {</span>
@@ -427,10 +424,10 @@ class="toc-section-number">5</span> Partials</a></li>
             web application.</p>
             <p>Example: we have this form:</p>
             <div class="sourceCode" id="cb18"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">&quot;post.php&quot;</span><span class="ot"> method</span><span class="op">=</span><span class="st">&quot;post&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;comment&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;submit&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;submit&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Submit&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="dt">&gt;</span></span></code></pre></div>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;post.php&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;post&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;comment&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;submit&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;submit&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;Submit&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form&gt;</span></span></code></pre></div>
             <p>And the page <code>post.php</code>:</p>
             <div class="sourceCode" id="cb19"><pre
             class="sourceCode php"><code class="sourceCode php"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$_POST</span>[<span class="st">&#39;comment&#39;</span>]<span class="ot">;</span></span></code></pre></div>
@@ -457,9 +454,9 @@ class="toc-section-number">5</span> Partials</a></li>
             <code>maxlength</code> and <code>pattern</code>.</p>
             <div class="sourceCode" id="cb21"><pre
             class="sourceCode html"><code class="sourceCode html"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Month (1-12):</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;number&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;month&quot;</span><span class="ot"> min</span><span class="op">=</span><span class="st">&quot;1&quot;</span><span class="ot"> max</span><span class="op">=</span><span class="st">&quot;12&quot;</span><span class="dt">/&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;number&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;month&quot;</span> <span class="er">min</span><span class="ot">=</span><span class="st">&quot;1&quot;</span> <span class="er">max</span><span class="ot">=</span><span class="st">&quot;12&quot;</span><span class="kw">/&gt;</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>DNI: 8 numbers 1 capital letter</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> pattern</span><span class="op">=</span><span class="st">&quot;[0-9]{8}[A-Z]{1}&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;dni&quot;</span><span class="ot"> </span><span class="dt">/&gt;</span></span></code></pre></div>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">pattern</span><span class="ot">=</span><span class="st">&quot;[0-9]{8}[A-Z]{1}&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;dni&quot;</span> <span class="kw">/&gt;</span></span></code></pre></div>
             <p><a
             href="https://www.w3schools.com/html/html_form_attributes.asp">More
             information about HTML form attributes</a></p>
@@ -639,8 +636,8 @@ class="toc-section-number">5</span> Partials</a></li>
             <p>Using <code>header</code> we can do something like
             this:</p>
             <div class="sourceCode" id="cb28"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">&quot;validation.php&quot;</span><span class="ot"> method</span><span class="op">=</span><span class="st">&quot;POST&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;name&quot;</span><span class="er">...</span><span class="dt">&gt;</span></span></code></pre></div>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;validation.php&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;POST&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;name&quot;</span><span class="er">...</span><span class="kw">&gt;</span></span></code></pre></div>
             <p>and then, in the validation script:</p>
             <div class="sourceCode" id="cb29"><pre
             class="sourceCode php"><code class="sourceCode php"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">// validation.php</span></span>
@@ -756,63 +753,63 @@ class="toc-section-number">5</span> Partials</a></li>
             <p>For instance, if we have the next basic template:</p>
             <div class="sourceCode" id="cb40"><pre
             class="sourceCode html"><code class="sourceCode html"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span> Page Title <span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;author&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span> Page Title <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">charset</span><span class="ot">=</span><span class="st">&quot;UTF-8&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;author&quot;</span> <span class="er">content</span><span class="ot">=</span><span class="st">&quot;&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Other head data, as stylesheets --&gt;</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
 <span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">header</span><span class="dt">&gt;</span></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Page header<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">header</span><span class="dt">&gt;</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;header&gt;</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h1&gt;</span>Page header<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/header&gt;</span></span>
 <span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Page-content --&gt;</span></span>
 <span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="dt">&gt;</span></span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Developed by author&#39;s name, year<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="dt">&gt;</span></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;footer&gt;</span></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;p&gt;</span>Developed by author&#39;s name, year<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/footer&gt;</span></span>
 <span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
             <p>We can split it in 3 parts: head, header and footer:</p>
             <div class="sourceCode" id="cb41"><pre
             class="sourceCode html"><code class="sourceCode html"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- head.part.php --&gt;</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span> Page Title <span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;author&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span> Page Title <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">charset</span><span class="ot">=</span><span class="st">&quot;UTF-8&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;author&quot;</span> <span class="er">content</span><span class="ot">=</span><span class="st">&quot;&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Other head data, as stylesheets --&gt;</span></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
 <span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span></code></pre></div>
             <div class="sourceCode" id="cb42"><pre
             class="sourceCode html"><code class="sourceCode html"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- header.part.php --&gt;</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">header</span><span class="dt">&gt;</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Page header<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">header</span><span class="dt">&gt;</span></span></code></pre></div>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;header&gt;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h1&gt;</span>Page header<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/header&gt;</span></span></code></pre></div>
             <div class="sourceCode" id="cb43"><pre
             class="sourceCode html"><code class="sourceCode html"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- footer.part.php --&gt;</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="dt">&gt;</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Developed by author&#39;s name, year<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="dt">&gt;</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;footer&gt;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;p&gt;</span>Developed by author&#39;s name, year<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/footer&gt;</span></span>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
             <p>And then include them in each page we make:</p>
             <div class="sourceCode" id="cb44"><pre
             class="sourceCode php"><code class="sourceCode php"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co">//main.php</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/head.part.php&#39;</span><span class="ot">;</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/header.part.php&#39;</span><span class="ot">;</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/head.part.php&#39;</span><span class="ot">;</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/header.part.php&#39;</span><span class="ot">;</span></span>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">&quot;Main content</span><span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span></span>
 <span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/footer.part.php&#39;</span><span class="ot">;</span></span></code></pre></div>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/footer.part.php&#39;</span><span class="ot">;</span></span></code></pre></div>
             <p>An improvement is to create variables for the title,
             author, etc. in the main file and use them in the partial
             files:</p>
@@ -825,37 +822,37 @@ class="toc-section-number">5</span> Partials</a></li>
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="va">$authorName</span> <span class="op">=</span> <span class="st">&quot;My name&quot;</span><span class="ot">;</span></span>
 <span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="va">$pageHeader</span> <span class="op">=</span> <span class="st">&quot;My page header&quot;</span><span class="ot">;</span></span>
 <span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/head.part.php&#39;</span><span class="ot">;</span></span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/header.part.php&#39;</span><span class="ot">;</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/head.part.php&#39;</span><span class="ot">;</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/header.part.php&#39;</span><span class="ot">;</span></span>
 <span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">&quot;Main content</span><span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span></span>
 <span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/footer.part.php&#39;</span><span class="ot">;</span></span></code></pre></div>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/footer.part.php&#39;</span><span class="ot">;</span></span></code></pre></div>
             <div class="sourceCode" id="cb46"><pre
             class="sourceCode html"><code class="sourceCode html"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- head.part.php --&gt;</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span> <span class="kw">&lt;?</span>= $pageTitle <span class="kw">?&gt;</span> <span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;author&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">?= $authorName ?&gt;&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span> <span class="kw">&lt;?</span>= $pageTitle <span class="kw">?&gt;</span> <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">charset</span><span class="ot">=</span><span class="st">&quot;UTF-8&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;author&quot;</span> <span class="er">content</span><span class="ot">=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">?= $authorName ?&gt;&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Other head data, as stylesheets --&gt;</span></span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
 <span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span></code></pre></div>
             <div class="sourceCode" id="cb47"><pre
             class="sourceCode html"><code class="sourceCode html"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- header.part.php --&gt;</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">header</span><span class="dt">&gt;</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span> <span class="kw">&lt;?</span>= $pageHeader <span class="kw">?&gt;</span> <span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">header</span><span class="dt">&gt;</span></span></code></pre></div>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;header&gt;</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h1&gt;</span> <span class="kw">&lt;?</span>= $pageHeader <span class="kw">?&gt;</span> <span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/header&gt;</span></span></code></pre></div>
             <div class="sourceCode" id="cb48"><pre
             class="sourceCode html"><code class="sourceCode html"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- footer.part.php --&gt;</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="dt">&gt;</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Developed by <span class="kw">&lt;?</span>= $authorName <span class="kw">?&gt;</span>, year<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="dt">&gt;</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;footer&gt;</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;p&gt;</span>Developed by <span class="kw">&lt;?</span>= $authorName <span class="kw">?&gt;</span>, year<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/footer&gt;</span></span>
 <span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
             <p>These variables (or constants) can go on a separate file
             which we can include in our page.</p>
             <p>If we want to add more data to the <code>head</code>,
@@ -877,25 +874,25 @@ class="toc-section-number">5</span> Partials</a></li>
 <span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">&quot;&lt;link rel=&#39;stylesheet&#39; href=&#39;</span><span class="va">$sheet</span><span class="st">&#39;&gt;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span></span>
 <span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/head.part.php&#39;</span><span class="ot">;</span></span>
-<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/header.part.php&#39;</span><span class="ot">;</span></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/head.part.php&#39;</span><span class="ot">;</span></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/header.part.php&#39;</span><span class="ot">;</span></span>
 <span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">&quot;Main content</span><span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span></span>
 <span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/footer.part.php&#39;</span><span class="ot">;</span></span></code></pre></div>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/footer.part.php&#39;</span><span class="ot">;</span></span></code></pre></div>
             <div class="sourceCode" id="cb50"><pre
             class="sourceCode html"><code class="sourceCode html"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- head.part.php --&gt;</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span> <span class="kw">&lt;?</span>= $pageTitle <span class="kw">?&gt;</span> <span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;author&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">?= $authorName ?&gt;&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span> <span class="kw">&lt;?</span>= $pageTitle <span class="kw">?&gt;</span> <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">charset</span><span class="ot">=</span><span class="st">&quot;UTF-8&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;author&quot;</span> <span class="er">content</span><span class="ot">=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">?= $authorName ?&gt;&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Other head data, as stylesheets --&gt;</span></span>
 <span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;?</span>= linkStylesheet($sheet) <span class="kw">?&gt;</span></span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
 <span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span></code></pre></div>
             <p>We can replace the <code>linkStylesheet</code> function
             with an arrow function, to make it shorter:</p>
             <div class="sourceCode" id="cb51"><pre
@@ -906,67 +903,61 @@ class="toc-section-number">5</span> Partials</a></li>
             class="sourceCode php"><code class="sourceCode php"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!--</span> head<span class="op">.</span>part<span class="op">.</span>php <span class="op">-</span>-&gt;</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>...</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="va">$linkStylesheet</span>()<span class="ot">;</span> <span class="kw">?&gt;</span></span></code></pre></div>
-            <p>As in the case of variables, the functions can go on a
-            separate file:</p>
-            <div class="sourceCode" id="cb53"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co">//functions.php</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="va">$linkStylesheet</span> <span class="op">=</span> <span class="kw">fn</span>() =&gt; <span class="st">&quot;&lt;link rel=&#39;stylesheet&#39; href=&#39;</span><span class="va">$sheet</span><span class="st">&#39;&gt;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span></span></code></pre></div>
             <p>And finally, we can generate automatically the year in
             the footer:</p>
-            <div class="sourceCode" id="cb54"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- footer.part.php --&gt;</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="dt">&gt;</span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Developed by <span class="kw">&lt;?</span>= $authorName <span class="kw">?&gt;</span>, <span class="kw">&lt;?</span>= date(&quot;Y&quot;);<span class="kw">?&gt;</span><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="dt">&gt;</span></span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb53"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- footer.part.php --&gt;</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;footer&gt;</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;p&gt;</span>Developed by <span class="kw">&lt;?</span>= $authorName <span class="kw">?&gt;</span>, <span class="kw">&lt;?</span>= date(&quot;Y&quot;);<span class="kw">?&gt;&lt;/p&gt;</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/footer&gt;</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
             <p>With the previous parts and the below main script:</p>
-            <div class="sourceCode" id="cb55"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co">//main.php</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co">//Template variables</span></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="va">$pageTitle</span> <span class="op">=</span> <span class="st">&quot;My Page Title&quot;</span><span class="ot">;</span></span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="va">$authorName</span> <span class="op">=</span> <span class="st">&quot;My name&quot;</span><span class="ot">;</span></span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="va">$pageHeader</span> <span class="op">=</span> <span class="st">&quot;My page header&quot;</span><span class="ot">;</span></span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="va">$sheet</span> <span class="op">=</span> <span class="st">&quot;css/main.css&quot;</span><span class="ot">;</span></span>
-<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/functions.php&#39;</span><span class="ot">;</span></span>
-<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/head.part.php&#39;</span><span class="ot">;</span></span>
-<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/header.part.php&#39;</span><span class="ot">;</span></span>
-<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">&quot;Main content</span><span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span></span>
-<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;parts/footer.part.php&#39;</span><span class="ot">;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb54"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co">//main.php</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co">//Template variables</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="va">$pageTitle</span> <span class="op">=</span> <span class="st">&quot;My Page Title&quot;</span><span class="ot">;</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="va">$authorName</span> <span class="op">=</span> <span class="st">&quot;My name&quot;</span><span class="ot">;</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="va">$pageHeader</span> <span class="op">=</span> <span class="st">&quot;My page header&quot;</span><span class="ot">;</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="va">$sheet</span> <span class="op">=</span> <span class="st">&quot;css/main.css&quot;</span><span class="ot">;</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/functions.php&#39;</span><span class="ot">;</span></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/head.part.php&#39;</span><span class="ot">;</span></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/header.part.php&#39;</span><span class="ot">;</span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">&quot;Main content</span><span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span></span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="cn">__DIR__</span> <span class="op">.</span> <span class="st">&#39;/parts/footer.part.php&#39;</span><span class="ot">;</span></span></code></pre></div>
             <p>the generated code should be:</p>
-            <div class="sourceCode" id="cb56"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- head.part.php --&gt;</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span> My Page Title <span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;author&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;My name&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Other head data, as stylesheets --&gt;</span></span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">&#39;stylesheet&#39;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&#39;css/main.css&#39;</span><span class="dt">&gt;</span></span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- header.part.php --&gt;</span></span>
-<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">header</span><span class="dt">&gt;</span></span>
-<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span> My page header <span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">header</span><span class="dt">&gt;</span></span>
-<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>Main content</span>
-<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- footer.part.php --&gt;</span></span>
-<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="dt">&gt;</span></span>
-<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Developed by My name, 2022<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">footer</span><span class="dt">&gt;</span></span>
-<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb55"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- head.part.php --&gt;</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span> My Page Title <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">charset</span><span class="ot">=</span><span class="st">&quot;UTF-8&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;author&quot;</span> <span class="er">content</span><span class="ot">=</span><span class="st">&quot;My name&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Other head data, as stylesheets --&gt;</span></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;link</span> <span class="er">rel</span><span class="ot">=</span><span class="st">&#39;stylesheet&#39;</span> <span class="er">href</span><span class="ot">=</span><span class="st">&#39;css/main.css&#39;</span><span class="kw">&gt;</span></span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- header.part.php --&gt;</span></span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;header&gt;</span></span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h1&gt;</span> My page header <span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/header&gt;</span></span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a>Main content</span>
+<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- footer.part.php --&gt;</span></span>
+<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;footer&gt;</span></span>
+<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;p&gt;</span>Developed by My name, 2022<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb55-21"><a href="#cb55-21" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/footer&gt;</span></span>
+<span id="cb55-22"><a href="#cb55-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-23"><a href="#cb55-23" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb55-24"><a href="#cb55-24" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
         </main>
         
 
