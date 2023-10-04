@@ -151,11 +151,7 @@ Classes</a></li>
 <li><a href="#polymorphism-in-php" id="toc-polymorphism-in-php"><span
 class="toc-section-number">2.13</span> Polymorphism in PHP</a></li>
 <li><a href="#anonymous-classes" id="toc-anonymous-classes"><span
-class="toc-section-number">2.14</span> Anonymous classes</a>
-<ul>
-<li><a href="#closure-objects" id="toc-closure-objects"><span
-class="toc-section-number">2.14.1</span> Closure objects</a></li>
-</ul></li>
+class="toc-section-number">2.14</span> Anonymous classes</a></li>
 <li><a href="#magic-methods" id="toc-magic-methods"><span
 class="toc-section-number">2.15</span> Magic methods</a></li>
 <li><a href="#serializing-objects" id="toc-serializing-objects"><span
@@ -911,43 +907,6 @@ class="toc-section-number">4.2.2</span> Using a error log file</a></li>
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>}<span class="ot">;</span></span>
 <span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$obj</span>-&gt;x<span class="ot">;</span> <span class="co">// &quot;Hi&quot;;</span></span></code></pre></div>
-            <h3 data-number="2.14.1" id="closure-objects"><span
-            class="header-section-number">2.14.1</span> Closure
-            objects</h3>
-            <p>As we have seen in the previous unit, anonymous functions
-            can capture data from outside its scope. When bound to an
-            object with the <code>bindTo</code> method, the function can
-            access the object properties as well. This creates a
-            <strong>closure object</strong>.</p>
-            <div class="sourceCode" id="cb34"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">C</span> {</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="va">$x</span> <span class="op">=</span> <span class="st">&#39;Hi&#39;</span><span class="ot">;</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="va">$getC</span> <span class="op">=</span> <span class="kw">function</span>() { <span class="cf">return</span> <span class="va">$this</span>-&gt;x<span class="ot">;</span> }<span class="ot">;</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="va">$getX</span> <span class="op">=</span> <span class="va">$getC</span>-&gt;bindTo(<span class="kw">new</span> <span class="cn">C</span><span class="ot">,</span> <span class="st">&#39;C&#39;</span>)<span class="ot">;</span> <span class="co">// creates a new C object</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="co">// and binds the function to it</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$getX</span>()<span class="ot">;</span> <span class="co">// &quot;Hi&quot;</span></span></code></pre></div>
-            <p>Another way to work with closure objects:</p>
-            <div class="sourceCode" id="cb35"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">A</span> {</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="va">$val</span><span class="ot">;</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="bu">__construct</span>(<span class="va">$val</span>) {</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;val <span class="op">=</span> <span class="va">$val</span><span class="ot">;</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> getClosure() {</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">//returns closure bound to this object and scope</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">function</span>() { <span class="cf">return</span> <span class="va">$this</span>-&gt;val<span class="ot">;</span> }<span class="ot">;</span></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="va">$ob1</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">A</span>(<span class="dv">1</span>)<span class="ot">;</span></span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="va">$ob2</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">A</span>(<span class="dv">2</span>)<span class="ot">;</span></span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="va">$cl</span> <span class="op">=</span> <span class="va">$ob1</span>-&gt;getClosure()<span class="ot">;</span></span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$cl</span>()<span class="ot">,</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span> <span class="co">// we will get 1</span></span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="va">$cl</span> <span class="op">=</span> <span class="va">$cl</span>-&gt;bindTo(<span class="va">$ob2</span>)<span class="ot">;</span> <span class="co">// now the function is bound to ob2 object</span></span>
-<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$cl</span>()<span class="ot">,</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span> <span class="co">// we will get 2</span></span></code></pre></div>
             <h2 data-number="2.15" id="magic-methods"><span
             class="header-section-number">2.15</span> Magic methods</h2>
             <p>Magic methods in PHP are special functions prefixed with
@@ -971,21 +930,21 @@ class="toc-section-number">4.2.2</span> Using a error log file</a></li>
             string, such as when using <code>echo</code>, the
             <code>__toString()</code> method is automatically called and
             returns the desired string representation of the object.</p>
-            <div class="sourceCode" id="cb36"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">P</span>erson {</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="va">$name</span><span class="ot">;</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="va">$surname</span><span class="ot">;</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__toString</span>() {</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$this</span>-&gt;name <span class="op">.</span> <span class="st">&#39; &#39;</span> <span class="op">.</span> <span class="va">$this</span>-&gt;surname<span class="ot">;</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="va">$person</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">P</span>erson()<span class="ot">;</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="va">$person</span>-&gt;name <span class="op">=</span> <span class="st">&quot;Jane&quot;</span><span class="ot">;</span></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="va">$person</span>-&gt;surname <span class="op">=</span> <span class="st">&quot;Smith&quot;</span><span class="ot">;</span></span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$person</span><span class="ot">;</span> <span class="co">// outputs &quot;Jane Smith&quot;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb34"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">P</span>erson {</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="va">$name</span><span class="ot">;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="va">$surname</span><span class="ot">;</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__toString</span>() {</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">$this</span>-&gt;name <span class="op">.</span> <span class="st">&#39; &#39;</span> <span class="op">.</span> <span class="va">$this</span>-&gt;surname<span class="ot">;</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="va">$person</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">P</span>erson()<span class="ot">;</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="va">$person</span>-&gt;name <span class="op">=</span> <span class="st">&quot;Jane&quot;</span><span class="ot">;</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="va">$person</span>-&gt;surname <span class="op">=</span> <span class="st">&quot;Smith&quot;</span><span class="ot">;</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="va">$person</span><span class="ot">;</span> <span class="co">// outputs &quot;Jane Smith&quot;</span></span></code></pre></div>
             <p><a
             href="https://www.php.net/manual/en/language.oop5.magic.php">Mora
             about magic methods</a></p>
@@ -1092,32 +1051,32 @@ class="toc-section-number">4.2.2</span> Using a error log file</a></li>
             sentence in the PHP file.</p>
             <p>Let’s see an exemple:</p>
             <p><strong>File namespace01.php</strong></p>
-            <div class="sourceCode" id="cb37"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">namespace</span> group01<span class="ot">;</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">S</span>ameName {</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb35"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">namespace</span> group01<span class="ot">;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">S</span>ameName {</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p><strong>File namespace02.php</strong></p>
-            <div class="sourceCode" id="cb38"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">namespace</span> group02<span class="ot">;</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">S</span>ameName {</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb36"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">namespace</span> group02<span class="ot">;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">S</span>ameName {</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <blockquote>
             <p>Although we have defined the different namespaces in
             different files, we can declare multiple namespaces in the
             same file.</p>
             </blockquote>
             <p>Now, in another PHP file we can do that:</p>
-            <div class="sourceCode" id="cb39"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;namespace01.php&#39;</span><span class="ot">;</span> <span class="co">// including the external file</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;namespace02.php&#39;</span><span class="ot">;</span> <span class="co">// including the external file</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> group01 <span class="kw">as</span> g1<span class="ot">;</span> <span class="co">// an alias for the namespace</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> group02 <span class="kw">as</span> g2<span class="ot">;</span> <span class="co">// an alias for the namespace</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="va">$object01</span> <span class="op">=</span> <span class="kw">new</span> g1\<span class="cn">S</span>ameName()<span class="ot">;</span> <span class="co">// using external namespace</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="va">$object02</span> <span class="op">=</span> <span class="kw">new</span> g2\<span class="cn">S</span>ameName()<span class="ot">;</span> <span class="co">// using external namespace</span></span></code></pre></div>
+            <div class="sourceCode" id="cb37"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;namespace01.php&#39;</span><span class="ot">;</span> <span class="co">// including the external file</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="kw">include</span> <span class="st">&#39;namespace02.php&#39;</span><span class="ot">;</span> <span class="co">// including the external file</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> group01 <span class="kw">as</span> g1<span class="ot">;</span> <span class="co">// an alias for the namespace</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> group02 <span class="kw">as</span> g2<span class="ot">;</span> <span class="co">// an alias for the namespace</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="va">$object01</span> <span class="op">=</span> <span class="kw">new</span> g1\<span class="cn">S</span>ameName()<span class="ot">;</span> <span class="co">// using external namespace</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="va">$object02</span> <span class="op">=</span> <span class="kw">new</span> g2\<span class="cn">S</span>ameName()<span class="ot">;</span> <span class="co">// using external namespace</span></span></code></pre></div>
             <p><a
             href="https://www.php.net/manual/en/language.namespaces.php">More
             about namespaces in PHP</a></p>
@@ -1155,13 +1114,13 @@ class="toc-section-number">4.2.2</span> Using a error log file</a></li>
             <p>In PHP5 the exceptions would be handled by using the
             <strong>exception</strong> class and the structure
             <strong><em>try…catch</em></strong>.</p>
-            <div class="sourceCode" id="cb40"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>     ...</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span>(<span class="bu">Exception</span> <span class="va">$e</span>) {</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">echo</span> <span class="va">$e</span>-&gt;getMessage()<span class="ot">;</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb38"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>     ...</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span>(<span class="bu">Exception</span> <span class="va">$e</span>) {</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">echo</span> <span class="va">$e</span>-&gt;getMessage()<span class="ot">;</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p>In PHP5 some internal errors can not be handled by using
             the <strong>exception</strong> class. In PHP7 we have the
             <strong>class throwable</strong> instead. It covers both
@@ -1169,42 +1128,42 @@ class="toc-section-number">4.2.2</span> Using a error log file</a></li>
             <p>Just in case we are not sure if the server supports PHP5
             or PHP7, we can include both clauses in our
             <strong><em>try…catch</em></strong> block.</p>
-            <div class="sourceCode" id="cb41"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Code that may cause an Exception or Error.</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">Throwable</span> <span class="va">$t</span>){</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Executed only in PHP 7, will not match in PHP 5</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">Exception</span> <span class="va">$e</span>){</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Only in PHP 5, won&#39;t be reached in PHP 7</span></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb39"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Code that may cause an Exception or Error.</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">Throwable</span> <span class="va">$t</span>){</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Executed only in PHP 7, will not match in PHP 5</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">Exception</span> <span class="va">$e</span>){</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Only in PHP 5, won&#39;t be reached in PHP 7</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p>Let’s see an example. If we run this code:</p>
-            <div class="sourceCode" id="cb42"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="va">$number</span> <span class="op">=</span> <span class="dv">10</span><span class="ot">;</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="va">$reverseNumber</span> <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="va">$number</span><span class="ot">;</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is </span><span class="va">$reverseNumber</span><span class="st">&lt;/h2&gt;&quot;</span><span class="ot">;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb40"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="va">$number</span> <span class="op">=</span> <span class="dv">10</span><span class="ot">;</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="va">$reverseNumber</span> <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="va">$number</span><span class="ot">;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is </span><span class="va">$reverseNumber</span><span class="st">&lt;/h2&gt;&quot;</span><span class="ot">;</span></span></code></pre></div>
             <p><strong>The output</strong>: The reverse of 10 is 0.1</p>
             <p>But if we change the value of <code>$number</code> to
             0:</p>
-            <div class="sourceCode" id="cb43"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">0</span><span class="ot">;</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="va">$reverseNumber</span> <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="va">$number</span><span class="ot">;</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is </span><span class="va">$reverseNumber</span><span class="st">&lt;/h2&gt;&quot;</span><span class="ot">;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb41"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">0</span><span class="ot">;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="va">$reverseNumber</span> <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="va">$number</span><span class="ot">;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is </span><span class="va">$reverseNumber</span><span class="st">&lt;/h2&gt;&quot;</span><span class="ot">;</span></span></code></pre></div>
             <p>We will get an exception:</p>
             <p><strong>Fatal error: Uncaught DivisionByZeroError:
             Division by zero</strong></p>
             <p>We can handle the exception by using the
             <strong>try…catch</strong> block:</p>
-            <div class="sourceCode" id="cb44"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="va">$number</span><span class="op">=</span><span class="dv">0</span><span class="ot">;</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">$reverseNumber</span><span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="va">$number</span><span class="ot">;</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is </span><span class="va">$reverseNumber</span><span class="st">&lt;/h2&gt;&quot;</span><span class="ot">;</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span>(<span class="bu">Throwable</span> <span class="va">$t</span>) {</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;An error happened&quot;</span><span class="ot">;</span></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb42"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="va">$number</span><span class="op">=</span><span class="dv">0</span><span class="ot">;</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">$reverseNumber</span><span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="va">$number</span><span class="ot">;</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is </span><span class="va">$reverseNumber</span><span class="st">&lt;/h2&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span>(<span class="bu">Throwable</span> <span class="va">$t</span>) {</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;An error happened&quot;</span><span class="ot">;</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p>We will get the output:</p>
             <p><strong>An error happened</strong></p>
             <p>If an error occurs within the <code>try</code> section,
@@ -1228,22 +1187,22 @@ class="toc-section-number">4.2.2</span> Using a error log file</a></li>
             after the finally block is executed. Additionally, if the
             finally block also contains a return statement, the value
             from the finally block is returned.</p>
-            <div class="sourceCode" id="cb45"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> reverse(<span class="va">$number</span>) {</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">$reverseNumber</span> <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="va">$number</span><span class="ot">;</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">$reverseumber</span><span class="ot">;</span>   <span class="co">// ERROR: wrong variable name</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">$number</span><span class="op">=</span><span class="dv">10</span><span class="ot">;</span></span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is&quot;</span><span class="op">.</span>reverse(<span class="va">$number</span>)<span class="op">.</span><span class="st">&quot;&lt;/h2&gt;&quot;</span><span class="ot">;</span></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">Throwable</span> <span class="va">$t</span>) {</span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;An error </span>{<span class="va">$t</span>-&gt;getMessage()}<span class="st"> happened&lt;br/&gt;&quot;</span><span class="ot">;</span></span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="cf">finally</span> {</span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h3&gt;This section will run anyway&lt;/h3&gt;&quot;</span><span class="ot">;</span></span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb43"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> reverse(<span class="va">$number</span>) {</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">$reverseNumber</span> <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="va">$number</span><span class="ot">;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">$reverseumber</span><span class="ot">;</span>   <span class="co">// ERROR: wrong variable name</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">$number</span><span class="op">=</span><span class="dv">10</span><span class="ot">;</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is&quot;</span><span class="op">.</span>reverse(<span class="va">$number</span>)<span class="op">.</span><span class="st">&quot;&lt;/h2&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">Throwable</span> <span class="va">$t</span>) {</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;An error </span>{<span class="va">$t</span>-&gt;getMessage()}<span class="st"> happened&lt;br/&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="cf">finally</span> {</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h3&gt;This section will run anyway&lt;/h3&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <figure>
             <img src="images/ud0803.jpg" alt="Finally section" />
             <figcaption aria-hidden="true">Finally section</figcaption>
@@ -1288,16 +1247,16 @@ class="toc-section-number">4.2.2</span> Using a error log file</a></li>
             </tbody>
             </table>
             <p>An example:</p>
-            <div class="sourceCode" id="cb46"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="va">$number</span><span class="op">=</span><span class="dv">0</span><span class="ot">;</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">$reverseNumber</span><span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="va">$number</span><span class="ot">;</span></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is </span><span class="va">$reverseNumber</span><span class="st">&lt;/h2&gt;&quot;</span><span class="ot">;</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span>(<span class="bu">Throwable</span> <span class="va">$t</span>) {</span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;An error </span>{<span class="va">$t</span>-&gt;getMessage()}<span class="st"> happened&lt;br/&gt;&quot;</span><span class="ot">;</span></span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;In line </span>{<span class="va">$t</span>-&gt;getLine()}<span class="st"> of file </span>{<span class="va">$t</span>-&gt;getFile()}<span class="st">&lt;br/&gt;&quot;</span><span class="ot">;</span></span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb44"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="va">$number</span><span class="op">=</span><span class="dv">0</span><span class="ot">;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">$reverseNumber</span><span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="va">$number</span><span class="ot">;</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is </span><span class="va">$reverseNumber</span><span class="st">&lt;/h2&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span>(<span class="bu">Throwable</span> <span class="va">$t</span>) {</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;An error </span>{<span class="va">$t</span>-&gt;getMessage()}<span class="st"> happened&lt;br/&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;In line </span>{<span class="va">$t</span>-&gt;getLine()}<span class="st"> of file </span>{<span class="va">$t</span>-&gt;getFile()}<span class="st">&lt;br/&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p>The output:</p>
             <figure>
             <img src="images/ud0801.jpg" alt="Catching an exception" />
@@ -1312,24 +1271,24 @@ class="toc-section-number">4.2.2</span> Using a error log file</a></li>
             <strong>Exception</strong> class. We can define our own
             custom class to handle exceptions by extending the
             <strong>Exception</strong> class.</p>
-            <div class="sourceCode" id="cb47"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">M</span>yException <span class="kw">extends</span> <span class="bu">Exception</span> {</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// we can override the Exception construct method</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__construct</span>(<span class="va">$message</span><span class="ot">,</span> <span class="va">$code</span> <span class="op">=</span> <span class="dv">0</span><span class="ot">,</span> <span class="bu">Throwable</span> <span class="va">$previous</span> <span class="op">=</span> <span class="kw">null</span>) {</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">// some code</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ...</span></span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">// but then we need to call the parent construct method</span></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">parent</span>::<span class="bu">__construct</span>(<span class="va">$message</span><span class="ot">,</span> <span class="va">$code</span><span class="ot">,</span> <span class="va">$previous</span>)<span class="ot">;</span></span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// custom string representation of object</span></span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__toString</span>() {</span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="cn">__CLASS__</span> <span class="op">.</span> <span class="st">&quot;: [</span>{<span class="va">$this</span>-&gt;code}<span class="st">]: </span>{<span class="va">$this</span>-&gt;message}<span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span></span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// a new function that doesn&#39;t exist in the Exception class</span></span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> customFunction() {</span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;A custom function for this type of exception</span><span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span></span>
-<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb45"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">M</span>yException <span class="kw">extends</span> <span class="bu">Exception</span> {</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// we can override the Exception construct method</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__construct</span>(<span class="va">$message</span><span class="ot">,</span> <span class="va">$code</span> <span class="op">=</span> <span class="dv">0</span><span class="ot">,</span> <span class="bu">Throwable</span> <span class="va">$previous</span> <span class="op">=</span> <span class="kw">null</span>) {</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">// some code</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ...</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">// but then we need to call the parent construct method</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">parent</span>::<span class="bu">__construct</span>(<span class="va">$message</span><span class="ot">,</span> <span class="va">$code</span><span class="ot">,</span> <span class="va">$previous</span>)<span class="ot">;</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// custom string representation of object</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> <span class="bu">__toString</span>() {</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="cn">__CLASS__</span> <span class="op">.</span> <span class="st">&quot;: [</span>{<span class="va">$this</span>-&gt;code}<span class="st">]: </span>{<span class="va">$this</span>-&gt;message}<span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// a new function that doesn&#39;t exist in the Exception class</span></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> customFunction() {</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;A custom function for this type of exception</span><span class="sc">\n</span><span class="st">&quot;</span><span class="ot">;</span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p>Now we can call the
             <code>$exception-&gt;customFunction()</code> as we do with
             <code>getMessage()</code> and other predefined
@@ -1340,20 +1299,20 @@ class="toc-section-number">4.2.2</span> Using a error log file</a></li>
             <p>We can handle specific exceptions by replacing the
             general clause <strong>throwable</strong> with the name of
             the specific exception in the catch section.</p>
-            <div class="sourceCode" id="cb48"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">DivisionByZeroError</span> <span class="va">$t</span>)</span></code></pre></div>
+            <div class="sourceCode" id="cb46"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">DivisionByZeroError</span> <span class="va">$t</span>)</span></code></pre></div>
             <p>Thus, we can handle different exceptions within the same
             <code>try...catch</code> block:</p>
-            <div class="sourceCode" id="cb49"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>     ...</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">DivisionByZeroError</span> <span class="va">$t</span>) {</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>     ...</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">ArithmeticError</span> <span class="va">$e</span>) {</span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>     …</span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb47"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>     ...</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">DivisionByZeroError</span> <span class="va">$t</span>) {</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>     ...</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">ArithmeticError</span> <span class="va">$e</span>) {</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>     …</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <ul>
             <li><a
             href="https://www.php.net/manual/en/reserved.exceptions.php">List
@@ -1368,45 +1327,45 @@ class="toc-section-number">4.2.2</span> Using a error log file</a></li>
             the main program instead of the function. Thus, we will
             avoid repetitions of the <code>try…catch</code> loop in each
             function.</p>
-            <div class="sourceCode" id="cb50"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> f1() {</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (…) {</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Exception</span>(<span class="st">&quot;Message01&quot;</span>)<span class="ot">;</span> <span class="co">// we throw an exception</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> …</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> f2() {</span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (…) {</span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Exception</span>(<span class="st">&quot;Message02&quot;</span>)<span class="ot">;</span> <span class="co">// we throw an exception</span></span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> …</span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="co">// with only one try…catch structure we capture exceptions from both functions</span></span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
-<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// here we call f1()</span></span>
-<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// and we call f2()</span></span>
-<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>} <span class="cf">catch</span> (<span class="bu">Exception</span> <span class="va">$exception</span>) {</span>
-<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;An exception happened: &quot;</span><span class="op">.</span><span class="va">$exception</span>-&gt;getMessage()<span class="ot">;</span></span>
-<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb48"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> f1() {</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (…) {</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Exception</span>(<span class="st">&quot;Message01&quot;</span>)<span class="ot">;</span> <span class="co">// we throw an exception</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> …</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> f2() {</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (…) {</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Exception</span>(<span class="st">&quot;Message02&quot;</span>)<span class="ot">;</span> <span class="co">// we throw an exception</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> …</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="co">// with only one try…catch structure we capture exceptions from both functions</span></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// here we call f1()</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// and we call f2()</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>} <span class="cf">catch</span> (<span class="bu">Exception</span> <span class="va">$exception</span>) {</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;An exception happened: &quot;</span><span class="op">.</span><span class="va">$exception</span>-&gt;getMessage()<span class="ot">;</span></span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <h2 data-number="4.2" id="warnings"><span
             class="header-section-number">4.2</span> Warnings</h2>
             <p>Some errors are not throwable. Take a look at this
             example:</p>
-            <div class="sourceCode" id="cb51"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> reverse(<span class="va">$number</span>) {</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">$reverseNumber</span> <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="va">$number</span><span class="ot">;</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">$reverseumber</span><span class="ot">;</span>   <span class="co">// ERROR: wrong variable name</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">$number</span><span class="op">=</span><span class="dv">10</span><span class="ot">;</span></span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is&quot;</span><span class="op">.</span>reverse(<span class="va">$number</span>)<span class="op">.</span><span class="st">&quot;&lt;/h2&gt;&quot;</span><span class="ot">;</span></span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">Throwable</span> <span class="va">$t</span>) {</span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;An error </span>{<span class="va">$t</span>-&gt;getMessage()}<span class="st"> happened&lt;br/&gt;&quot;</span><span class="ot">;</span></span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb49"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> reverse(<span class="va">$number</span>) {</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">$reverseNumber</span> <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="va">$number</span><span class="ot">;</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">$reverseumber</span><span class="ot">;</span>   <span class="co">// ERROR: wrong variable name</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">$number</span><span class="op">=</span><span class="dv">10</span><span class="ot">;</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is&quot;</span><span class="op">.</span>reverse(<span class="va">$number</span>)<span class="op">.</span><span class="st">&quot;&lt;/h2&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">Throwable</span> <span class="va">$t</span>) {</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;An error </span>{<span class="va">$t</span>-&gt;getMessage()}<span class="st"> happened&lt;br/&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p>When we run the script, we will get a
             <strong>warning</strong>:</p>
             <figure>
@@ -1428,38 +1387,38 @@ class="toc-section-number">4.2.2</span> Using a error log file</a></li>
             <p>We can handle warnings by transforming them into
             exceptions with our own error handling function. First, we
             create the function:</p>
-            <div class="sourceCode" id="cb52"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> handleErrors(<span class="va">$eLevel</span><span class="ot">,</span> <span class="va">$eMessage</span><span class="ot">,</span> <span class="va">$eFile</span><span class="ot">,</span> <span class="va">$eLine</span>){</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Exception</span>(<span class="st">&quot;Error &quot;</span><span class="op">.</span><span class="va">$eMessage</span><span class="op">.</span><span class="st">&quot; in line &quot;</span><span class="op">.</span>   </span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>       <span class="va">$eLine</span><span class="op">.</span><span class="st">&quot; of &quot;</span><span class="op">.</span><span class="va">$eFile</span>)<span class="ot">;</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb50"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> handleErrors(<span class="va">$eLevel</span><span class="ot">,</span> <span class="va">$eMessage</span><span class="ot">,</span> <span class="va">$eFile</span><span class="ot">,</span> <span class="va">$eLine</span>){</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Exception</span>(<span class="st">&quot;Error &quot;</span><span class="op">.</span><span class="va">$eMessage</span><span class="op">.</span><span class="st">&quot; in line &quot;</span><span class="op">.</span>   </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>       <span class="va">$eLine</span><span class="op">.</span><span class="st">&quot; of &quot;</span><span class="op">.</span><span class="va">$eFile</span>)<span class="ot">;</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p>And now we convert our function into the error handling
             function:</p>
-            <div class="sourceCode" id="cb53"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_error_handler</span>(<span class="st">&quot;handleErrors&quot;</span>)<span class="ot">;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb51"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_error_handler</span>(<span class="st">&quot;handleErrors&quot;</span>)<span class="ot">;</span></span></code></pre></div>
             <p>We should restore the automatic error handler at the end
             of the script with the function
             <code>restore_error_handler()</code>.</p>
-            <div class="sourceCode" id="cb54"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> handleErrors(<span class="va">$eLevel</span><span class="ot">,</span> <span class="va">$eMessage</span><span class="ot">,</span> <span class="va">$eFile</span><span class="ot">,</span> <span class="va">$eLine</span>) {</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Exception</span>(<span class="st">&quot;Error &quot;</span><span class="op">.</span><span class="va">$eMessage</span><span class="op">.</span><span class="st">&quot; in line &quot;</span><span class="op">.</span><span class="va">$eLine</span><span class="op">.</span><span class="st">&quot;</span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="st">    of &quot;</span><span class="op">.</span><span class="va">$eFile</span>)<span class="ot">;</span> <span class="co">// both warnings and exceptions will be thrown as exceptions</span></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> reverse(<span class="va">$number</span>) {</span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">$reverseNumber</span> <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="va">$number</span><span class="ot">;</span></span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">$reverseumber</span><span class="ot">;</span> <span class="co">// this will cause a warning</span></span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="fu">set_error_handler</span>(<span class="st">&quot;handleErrors&quot;</span>)<span class="ot">;</span></span>
-<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
-<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">$number</span><span class="op">=</span><span class="dv">10</span><span class="ot">;</span></span>
-<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is &quot;</span><span class="op">.</span>reverse(<span class="va">$number</span>)<span class="op">.</span><span class="st">&quot;&lt;/h2&gt;&quot;</span><span class="ot">;</span></span>
-<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">Throwable</span> <span class="va">$t</span>) {</span>
-<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;An error </span>{<span class="va">$t</span>-&gt;getMessage()}<span class="st"> happened&lt;br/&gt;&quot;</span><span class="ot">;</span></span>
-<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a><span class="fu">restore_error_handler</span>()<span class="ot">;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb52"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> handleErrors(<span class="va">$eLevel</span><span class="ot">,</span> <span class="va">$eMessage</span><span class="ot">,</span> <span class="va">$eFile</span><span class="ot">,</span> <span class="va">$eLine</span>) {</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Exception</span>(<span class="st">&quot;Error &quot;</span><span class="op">.</span><span class="va">$eMessage</span><span class="op">.</span><span class="st">&quot; in line &quot;</span><span class="op">.</span><span class="va">$eLine</span><span class="op">.</span><span class="st">&quot;</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="st">    of &quot;</span><span class="op">.</span><span class="va">$eFile</span>)<span class="ot">;</span> <span class="co">// both warnings and exceptions will be thrown as exceptions</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> reverse(<span class="va">$number</span>) {</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">$reverseNumber</span> <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="va">$number</span><span class="ot">;</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">$reverseumber</span><span class="ot">;</span> <span class="co">// this will cause a warning</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="fu">set_error_handler</span>(<span class="st">&quot;handleErrors&quot;</span>)<span class="ot">;</span></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">$number</span><span class="op">=</span><span class="dv">10</span><span class="ot">;</span></span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt;The reverse of </span><span class="va">$number</span><span class="st"> is &quot;</span><span class="op">.</span>reverse(<span class="va">$number</span>)<span class="op">.</span><span class="st">&quot;&lt;/h2&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> (<span class="bu">Throwable</span> <span class="va">$t</span>) {</span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">echo</span> <span class="st">&quot;An error </span>{<span class="va">$t</span>-&gt;getMessage()}<span class="st"> happened&lt;br/&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a><span class="fu">restore_error_handler</span>()<span class="ot">;</span></span></code></pre></div>
             <h3 data-number="4.2.2" id="using-a-error-log-file"><span
             class="header-section-number">4.2.2</span> Using a error log
             file</h3>
@@ -1467,26 +1426,26 @@ class="toc-section-number">4.2.2</span> Using a error log file</a></li>
             File</strong>. In this case, the name of the file should not
             be <strong><em>error.log</em></strong> because it already
             exists and is handling apache errors.</p>
-            <div class="sourceCode" id="cb55"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> handlingErrors(<span class="va">$eLevel</span><span class="ot">,</span> <span class="va">$eMessage</span><span class="ot">,</span> <span class="va">$eFile</span><span class="ot">,</span> <span class="va">$eLine</span>) {</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">error_log</span>(<span class="st">&quot;</span><span class="va">$eMessage</span><span class="st"> in </span><span class="va">$eFile</span><span class="st">, line </span><span class="va">$eLine</span><span class="st">&quot;</span><span class="ot">,</span> <span class="co">// message</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                <span class="dv">3</span><span class="ot">,</span>  <span class="co">// append mode</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;c:/xampp/apache/logs/user_errors&quot;</span>)<span class="ot">;</span> <span class="co">// file route/name</span></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb53"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> handlingErrors(<span class="va">$eLevel</span><span class="ot">,</span> <span class="va">$eMessage</span><span class="ot">,</span> <span class="va">$eFile</span><span class="ot">,</span> <span class="va">$eLine</span>) {</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">error_log</span>(<span class="st">&quot;</span><span class="va">$eMessage</span><span class="st"> in </span><span class="va">$eFile</span><span class="st">, line </span><span class="va">$eLine</span><span class="st">&quot;</span><span class="ot">,</span> <span class="co">// message</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>                <span class="dv">3</span><span class="ot">,</span>  <span class="co">// append mode</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;c:/xampp/apache/logs/user_errors&quot;</span>)<span class="ot">;</span> <span class="co">// file route/name</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p>In addition, we can add the user name
             (<code>get_current_user()</code>), the IP
             (<code>$_SERVER['remote_addr']</code>) of the client that
             launched the script, the date and any other information
             available.</p>
-            <div class="sourceCode" id="cb56"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> handleErrors(<span class="va">$eLevel</span><span class="ot">,</span> <span class="va">$eMessage</span><span class="ot">,</span> <span class="va">$eFile</span><span class="ot">,</span> <span class="va">$eLine</span>){</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">$newMessage</span> <span class="op">=</span> <span class="st">&quot;Date: &quot;</span><span class="op">.</span><span class="fu">date</span>(<span class="st">&quot;H:i d-m-Y &quot;</span>)<span class="op">.</span><span class="va">$eMessage</span><span class="op">.</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot; in file &quot;</span><span class="op">.</span><span class="va">$eFile</span><span class="op">.</span><span class="st">&quot; line &quot;</span><span class="op">.</span><span class="va">$eLine</span><span class="op">.</span></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot; User: &quot;</span><span class="op">.</span><span class="fu">get_current_user</span>()<span class="op">.</span><span class="st">&quot; from IP: &quot;</span><span class="op">.</span>  <span class="va">$_SERVER</span>[<span class="st">&#39;REMOTE_ADDR&#39;</span>]<span class="ot">;</span></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">error_log</span>(<span class="st">&quot;</span><span class="va">$newMessage</span><span class="st"> in </span><span class="va">$eFile</span><span class="st">, line </span><span class="va">$eLine</span><span class="st">&quot;</span><span class="ot">,</span> </span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>        <span class="dv">3</span><span class="ot">,</span>                                              </span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;c:/xampp/apache/logs/user_errors&quot;</span>)<span class="ot">;</span>        </span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb54"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> handleErrors(<span class="va">$eLevel</span><span class="ot">,</span> <span class="va">$eMessage</span><span class="ot">,</span> <span class="va">$eFile</span><span class="ot">,</span> <span class="va">$eLine</span>){</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">$newMessage</span> <span class="op">=</span> <span class="st">&quot;Date: &quot;</span><span class="op">.</span><span class="fu">date</span>(<span class="st">&quot;H:i d-m-Y &quot;</span>)<span class="op">.</span><span class="va">$eMessage</span><span class="op">.</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot; in file &quot;</span><span class="op">.</span><span class="va">$eFile</span><span class="op">.</span><span class="st">&quot; line &quot;</span><span class="op">.</span><span class="va">$eLine</span><span class="op">.</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot; User: &quot;</span><span class="op">.</span><span class="fu">get_current_user</span>()<span class="op">.</span><span class="st">&quot; from IP: &quot;</span><span class="op">.</span>  <span class="va">$_SERVER</span>[<span class="st">&#39;REMOTE_ADDR&#39;</span>]<span class="ot">;</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">error_log</span>(<span class="st">&quot;</span><span class="va">$newMessage</span><span class="st"> in </span><span class="va">$eFile</span><span class="st">, line </span><span class="va">$eLine</span><span class="st">&quot;</span><span class="ot">,</span> </span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>        <span class="dv">3</span><span class="ot">,</span>                                              </span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;c:/xampp/apache/logs/user_errors&quot;</span>)<span class="ot">;</span>        </span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
         </main>
         
 
