@@ -11,8 +11,11 @@
         div.columns{display: flex; gap: min(4vw, 1.5em);}
         div.column{flex: auto; overflow-x: auto;}
         div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-        ul.task-list{list-style: none;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
         ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
           width: 0.8em;
           margin: 0 0.8em 0.2em -1.6em;
           vertical-align: middle;
@@ -513,7 +516,7 @@ class="toc-section-number">7</span> Passwords in the database</a></li>
             <p>An alternative way:</p>
             <div class="sourceCode" id="cb25"><pre
             class="sourceCode php"><code class="sourceCode php"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span>-&gt;execute([<span class="st">&#39;:v1&#39;</span>=&gt;<span class="st">&#39;realValue1&#39;</span><span class="ot">,</span><span class="st">&#39;:v2&#39;</span>=&gt;<span class="st">&#39;realValue2&#39;</span>...])<span class="ot">;</span></span></code></pre></div>
-            <p>We can work use the ? symbol as well.</p>
+            <p>We can work using the ? symbol as well.</p>
             <div class="sourceCode" id="cb26"><pre
             class="sourceCode php"><code class="sourceCode php"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="va">$sql</span> <span class="op">=</span> <span class="st">&#39;INSERT INTO SQLTable values (?,?)&#39;</span><span class="ot">;</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="va">$stmt</span> <span class="op">=</span> <span class="va">$db</span>-&gt;prepare(<span class="va">$sql</span>)<span class="ot">;</span></span>
