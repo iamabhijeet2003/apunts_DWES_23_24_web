@@ -11,11 +11,8 @@
         div.columns{display: flex; gap: min(4vw, 1.5em);}
         div.column{flex: auto; overflow-x: auto;}
         div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-        /* The extra [class] is a hack that increases specificity enough to
-           override a similar rule in reveal.js */
-        ul.task-list[class]{list-style: none;}
+        ul.task-list{list-style: none;}
         ul.task-list li input[type="checkbox"] {
-          font-size: inherit;
           width: 0.8em;
           margin: 0 0.8em 0.2em -1.6em;
           vertical-align: middle;
@@ -478,7 +475,7 @@ class="toc-section-number">2.6</span> login_form.php</a></li>
             <p>In the HTML body, we create a form to submit the chosen
             id to the <code>login_form</code> script:</p>
             <div class="sourceCode" id="cb14"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">&quot;login_form.php&quot;</span><span class="ot"> method</span><span class="op">=</span><span class="st">&quot;get&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;form1&quot;</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;border: none&quot;</span><span class="dt">&gt;</span></span></code></pre></div>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;login_form.php&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;get&quot;</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;form1&quot;</span> <span class="er">style</span><span class="ot">=</span><span class="st">&quot;border: none&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
             <p>Finally we create a table populated with the next PHP
             code:</p>
             <div class="sourceCode" id="cb15"><pre
@@ -584,7 +581,7 @@ class="toc-section-number">2.6</span> login_form.php</a></li>
             <p>The validation process is similar to the one shown in
             unit 4, but here we are working with objects.</p>
             <p>You can get all the code from the <a
-            href="https://github.com/ricardoprofe/php-db-sample">GitHub
+            href="https://github.com/ricardoprofe/php-db-sample-23_24">GitHub
             repository</a>.</p>
         </main>
         
