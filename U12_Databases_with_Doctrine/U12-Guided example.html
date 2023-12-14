@@ -413,16 +413,16 @@ What type of relationship is this?
             <code>ContactsController</code> class and remove the
             <code>App\Service\ContactData</code> use and add the classes
             <code>Contact</code> and <code>Phone</code>. We also need
-            the <code>ManagerRegistry</code> interface from
+            the <code>EntityManagerInterface</code> interface from
             Doctrine:</p>
             <div class="sourceCode" id="cb17"><pre
-            class="sourceCode php"><code class="sourceCode php"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">D</span>octrine\<span class="cn">P</span>ersistence\<span class="cn">M</span>anagerRegistry<span class="ot">;</span></span>
+            class="sourceCode php"><code class="sourceCode php"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">D</span>octrine\<span class="cn">ORM</span>\<span class="cn">E</span>ntityManagerInterface<span class="ot">;</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">E</span>ntity\<span class="cn">C</span>ontact<span class="ot">;</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">E</span>ntity\<span class="cn">P</span>hone<span class="ot">;</span></span></code></pre></div>
             <p>In the <code>contact</code> function we create a
             persistent object named <code>$entityManager</code> via
             <em>dependency injection</em> (we pass a
-            <code>ManagerRegistryInterface</code> object as argument to
+            <code>EntityManagerInterface</code> object as argument to
             the function), get a <code>Contact</code> class repository
             from it (with the method <code>getRepository</code>) and
             find the contact by its <code>Id</code>:</p>
