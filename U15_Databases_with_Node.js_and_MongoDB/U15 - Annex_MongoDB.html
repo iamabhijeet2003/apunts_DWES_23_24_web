@@ -1046,7 +1046,7 @@ cinema&gt; </code></pre>
             for the documents that match the query condition</td>
             </tr>
             <tr class="odd">
-            <td><code>$[</code><identifier><code>]</code></td>
+            <td><code>$['&lt;identifier&gt;']</code></td>
             <td>Acts as a placeholder to update all elements that match
             the arrayFilters condition for the documents that match the
             query condition</td>
@@ -1125,25 +1125,39 @@ cinema&gt; </code></pre>
             </thead>
             <tbody>
             <tr class="odd">
-            <td><span
-            class="math inline"><em>e</em><em>q</em>|<em>M</em><em>a</em><em>t</em><em>c</em><em>h</em><em>e</em><em>s</em><em>v</em><em>a</em><em>l</em><em>u</em><em>e</em><em>s</em><em>t</em><em>h</em><em>a</em><em>t</em><em>a</em><em>r</em><em>e</em><em>e</em><em>q</em><em>u</em><em>a</em><em>l</em><em>t</em><em>o</em><em>a</em><em>s</em><em>p</em><em>e</em><em>c</em><em>i</em><em>f</em><em>i</em><em>e</em><em>d</em><em>v</em><em>a</em><em>l</em><em>u</em><em>e</em>||</span>gt</td>
+            <td><code>$eq</code></td>
+            <td>Matches values that are equal to a specified value</td>
+            </tr>
+            <tr class="even">
+            <td><code>$gt</code></td>
             <td>Matches values that are greater than a specified
             value</td>
             </tr>
-            <tr class="even">
-            <td><span
-            class="math inline"><em>g</em><em>t</em><em>e</em>|<em>M</em><em>a</em><em>t</em><em>c</em><em>h</em><em>e</em><em>s</em><em>v</em><em>a</em><em>l</em><em>u</em><em>e</em><em>s</em><em>t</em><em>h</em><em>a</em><em>t</em><em>a</em><em>r</em><em>e</em><em>g</em><em>r</em><em>e</em><em>a</em><em>t</em><em>e</em><em>r</em><em>t</em><em>h</em><em>a</em><em>n</em><em>o</em><em>r</em><em>e</em><em>q</em><em>u</em><em>a</em><em>l</em><em>t</em><em>o</em><em>a</em><em>s</em><em>p</em><em>e</em><em>c</em><em>i</em><em>f</em><em>i</em><em>e</em><em>d</em><em>v</em><em>a</em><em>l</em><em>u</em><em>e</em>||</span>in</td>
-            <td>Matches any of the values specified in an array</td>
-            </tr>
             <tr class="odd">
-            <td><span
-            class="math inline"><em>l</em><em>t</em>|<em>M</em><em>a</em><em>t</em><em>c</em><em>h</em><em>e</em><em>s</em><em>v</em><em>a</em><em>l</em><em>u</em><em>e</em><em>s</em><em>t</em><em>h</em><em>a</em><em>t</em><em>a</em><em>r</em><em>e</em><em>l</em><em>e</em><em>s</em><em>s</em><em>t</em><em>h</em><em>a</em><em>n</em><em>a</em><em>s</em><em>p</em><em>e</em><em>c</em><em>i</em><em>f</em><em>i</em><em>e</em><em>d</em><em>v</em><em>a</em><em>l</em><em>u</em><em>e</em>||</span>lte</td>
-            <td>Matches values that are less than or equal to a
+            <td><code>$gte</code></td>
+            <td>Matches values that are greater than or equal to a
             specified value</td>
             </tr>
             <tr class="even">
-            <td><span
-            class="math inline"><em>n</em><em>e</em>|<em>M</em><em>a</em><em>t</em><em>c</em><em>h</em><em>e</em><em>s</em><em>a</em><em>l</em><em>l</em><em>v</em><em>a</em><em>l</em><em>u</em><em>e</em><em>s</em><em>t</em><em>h</em><em>a</em><em>t</em><em>a</em><em>r</em><em>e</em><em>n</em><em>o</em><em>t</em><em>e</em><em>q</em><em>u</em><em>a</em><em>l</em><em>t</em><em>o</em><em>a</em><em>s</em><em>p</em><em>e</em><em>c</em><em>i</em><em>f</em><em>i</em><em>e</em><em>d</em><em>v</em><em>a</em><em>l</em><em>u</em><em>e</em>||</span>nin</td>
+            <td><code>$in</code></td>
+            <td>Matches any of the values specified in an array</td>
+            </tr>
+            <tr class="odd">
+            <td><code>$lt</code></td>
+            <td>Matches values that are less than a specified value</td>
+            </tr>
+            <tr class="even">
+            <td><code>$lte</code></td>
+            <td>Matches values that are less than or equal to a
+            specified value</td>
+            </tr>
+            <tr class="odd">
+            <td><code>$ne</code></td>
+            <td>Matches all values that are not equal to a specified
+            value</td>
+            </tr>
+            <tr class="even">
+            <td><code>$nin</code></td>
             <td>Matches none of the values specified in an array</td>
             </tr>
             </tbody>
