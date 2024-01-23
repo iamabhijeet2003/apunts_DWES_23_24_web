@@ -148,12 +148,12 @@ class="toc-section-number">2.3</span> Authorization</a></li>
                 <main>
             <h1 data-number="1" id="middleware"><span
             class="header-section-number">1</span> Middleware</h1>
-            <p><strong>Middleware</strong> can be defined as software
-            that runs between two others. In the Node.js context,
-            middleware is a function that handles HTTP requests and
-            responses. It can manipulate them and pass them to the next
-            middleware for further processing or terminate the process
-            and independently send a response to the client.</p>
+            <p><strong>Middleware</strong> can be defined as the
+            software that runs between two others. In the Node.js
+            context, middleware is a function that handles HTTP requests
+            and responses. It can manipulate them and pass them to the
+            next middleware for further processing or terminate the
+            process and independently send a response to the client.</p>
             <h2 data-number="1.1" id="the-use-method"><span
             class="header-section-number">1.1</span> The “use”
             method</h2>
@@ -173,11 +173,11 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             Middleware</h2>
             <p>In addition to this and other examples of third-party
             middleware that we can incorporate into our projects, we can
-            also define our own middleware function. We can include it
+            also define our own middleware functions. We can include it
             in the request and response processing chain using the
             application’s <code>use</code> method. For example, the
             following middleware logs the IP address of the client
-            making the request to the console:</p>
+            sending the request to the console:</p>
             <div class="sourceCode" id="cb2"><pre
             class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>((req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Request from&quot;</span><span class="op">,</span> req<span class="op">.</span><span class="at">ip</span>)<span class="op">;</span></span>
@@ -188,8 +188,8 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             <em>response</em>, and a reference to the <em>next</em>
             middleware that must be called <code>next</code>. Any
             middleware can end the chain by sending something in the
-            response to the client. Still, if it doesn’t, it must call
-            the next middleware.</p>
+            response to the client. If it doesn’t, it calls the next
+            middleware.</p>
             <p>We can use multiple <code>use</code> calls to load
             different middlewares, and the order in which we make these
             calls is crucial because it determines the order in which
@@ -258,17 +258,16 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             it generates a token, an encoded string that identifies the
             user. This token is sent to the client, typically as
             response data. Internally, it may contain some data that
-            allows identifying the user, such as their login or
+            allows identifying the user, such as their login username or
             email.</p></li>
             </ol>
             <blockquote>
-            <p>Note: It is not recommendable to add highly confidential
-            information, such as the password, in the token (nor in
-            sessions), as it can be easily decoded. This doesn’t mean
-            that the token is an insecure authentication mechanism, as
-            the server uses a secret key to encrypt a part of the token,
-            thus verifying its correctness, but the rest of the token is
-            more exposed.</p>
+            <p>Note: It is not recommended to add confidential
+            information, such as the password, in the token, as it can
+            be easily decoded. This doesn’t mean that the token is an
+            insecure authentication mechanism, as the server uses a
+            secret key to encrypt a part of the token, but the rest of
+            the token is more exposed.</p>
             </blockquote>
             <ol start="3" type="1">
             <li>The client receives the token and stores it locally
@@ -300,10 +299,10 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             <li>A registration method to register new users and to
             generate their hashed passwords.</li>
             <li>An authentication method that receives the user’s
-            credentials (typically username/email and password), check
+            credentials (typically username/email and password), checks
             them against the database and generates an authentication
             token which is resent to the user.</li>
-            <li>A authorization method, based on the user’s role. In
+            <li>An authorization method, based on the user’s role. In
             this step we protect certain routes depending on the user’s
             role.</li>
             </ol>
@@ -339,8 +338,8 @@ class="toc-section-number">2.3</span> Authorization</a></li>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> User <span class="op">=</span> mongoose<span class="op">.</span><span class="fu">model</span>(<span class="st">&#39;users&#39;</span><span class="op">,</span> userSchema)<span class="op">;</span></span>
 <span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> User<span class="op">;</span></span></code></pre></div>
             <p>Instead of use the match operator to validate the email,
-            we can use the <strong>validator</strong> library. First,
-            install the packet using npm:</p>
+            we can use the <strong>validator</strong> library. To do
+            that, first, install the packet using <code>npm</code>:</p>
             <div class="sourceCode" id="cb6"><pre
             class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install validator</span></code></pre></div>
             <p>Then, import the library and replace <code>match</code>
@@ -367,25 +366,28 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             do a new route controller named <code>users.js</code> in the
             <code>routes</code> folder:</p>
             <div class="sourceCode" id="cb8"><pre
-            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;express&#39;</span>)<span class="op">;</span></span>
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">// routes/users.js</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> Contact <span class="op">=</span> <span class="pp">require</span>(<span class="bu">__dirname</span> <span class="op">+</span> <span class="st">&#39;/../models/user.js&#39;</span>)<span class="op">;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> router <span class="op">=</span> express<span class="op">.</span><span class="fu">Router</span>()<span class="op">;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Here will go the routes</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;express&#39;</span>)<span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> Contact <span class="op">=</span> <span class="pp">require</span>(<span class="bu">__dirname</span> <span class="op">+</span> <span class="st">&#39;/../models/user.js&#39;</span>)<span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> router <span class="op">=</span> express<span class="op">.</span><span class="fu">Router</span>()<span class="op">;</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> router<span class="op">;</span></span></code></pre></div>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Here will go the routes</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> router<span class="op">;</span></span></code></pre></div>
             <p>Remember to add the <code>users</code> route in
             <code>index.js</code>:</p>
             <div class="sourceCode" id="cb9"><pre
-            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">//Routes</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> users <span class="op">=</span> <span class="pp">require</span>(<span class="bu">__dirname</span> <span class="op">+</span> <span class="st">&#39;/routes/users&#39;</span>)<span class="op">;</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Routers for each group of routes</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="st">&#39;/users&#39;</span><span class="op">,</span> users)<span class="op">;</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code></pre></div>
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">// index.js</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">//Routes</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> users <span class="op">=</span> <span class="pp">require</span>(<span class="bu">__dirname</span> <span class="op">+</span> <span class="st">&#39;/routes/users&#39;</span>)<span class="op">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Routers for each group of routes</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="st">&#39;/users&#39;</span><span class="op">,</span> users)<span class="op">;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code></pre></div>
             <p>We also need the <a
             href="https://www.npmjs.com/package/bcryptjs">Bcrypt.js
             module</a> in order to make the hash of the password.
@@ -397,44 +399,47 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;express&#39;</span>)<span class="op">;</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> bcrypt <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;bcryptjs&#39;</span>)<span class="op">;</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code></pre></div>
-            <p>Now, let’s create the new router. We will use the POST
+            <p>Now, let’s create the new route. We will use the POST
             <code>/register</code> route, so the full registration route
-            will be <code>/users/register</code>. In the method we check
-            if the password has a minimum length of 8 characters (if we
-            do that later, when the password is encrypted, the users
-            could write a password with a length less than 8). If the
-            password has the minimum length, we encrypt it with the
+            will be <code>/users/register</code>. In the method, we
+            check if the password has a minimum length of 8 characters
+            (if we do that later, when the password is encrypted, the
+            users could write a password with a length less than 8). If
+            the password has the minimum length, we encrypt it with the
             <code>bcrypt.hash</code> method (the second parameter,
-            <code>10</code>, is the salt rounds number). If successful,
-            create a new user with the hashed password and store it in
-            the database:</p>
+            <code>10</code>, is the number of salt rounds used). If
+            successful, create a new user with the hashed password and
+            store it in the database:</p>
             <div class="sourceCode" id="cb12"><pre
-            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Register a new user</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">post</span>(<span class="st">&#39;/register&#39;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Check the password length before cipher</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(req<span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">password</span><span class="op">.</span><span class="at">length</span> <span class="op">&lt;</span> <span class="dv">8</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> </span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;The password must have at least 8 characters&quot;</span>})<span class="op">;</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        bcrypt<span class="op">.</span><span class="fu">hash</span>(req<span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">password</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> (err<span class="op">,</span> hash) <span class="kw">=&gt;</span> {</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> newUser <span class="op">=</span> <span class="kw">new</span> <span class="fu">User</span>({</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>                <span class="dt">email</span><span class="op">:</span> req<span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">email</span><span class="op">,</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>                <span class="dt">password</span><span class="op">:</span> hash</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>            })<span class="op">;</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>            newUser<span class="op">.</span><span class="fu">save</span>()<span class="op">.</span><span class="fu">then</span>(result <span class="kw">=&gt;</span> {</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                <span class="co">//Delete the password after saved</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                newUser<span class="op">.</span><span class="at">password</span> <span class="op">=</span> <span class="st">&quot;SECRET&quot;</span><span class="op">;</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                res<span class="op">.</span><span class="fu">status</span>(<span class="dv">200</span>)</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">result</span><span class="op">:</span> result})<span class="op">;</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>            })<span class="op">.</span><span class="fu">catch</span>(error <span class="kw">=&gt;</span> {</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>                res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> error})<span class="op">;</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>            })<span class="op">;</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    }    </span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">// routes/users.js</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">//Register a new user</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">post</span>(<span class="st">&#39;/register&#39;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Check the password length before cipher</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(req<span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">password</span><span class="op">.</span><span class="at">length</span> <span class="op">&lt;</span> <span class="dv">8</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;The password must have at least 8 characters&quot;</span>})<span class="op">;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        bcrypt<span class="op">.</span><span class="fu">hash</span>(req<span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">password</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> (err<span class="op">,</span> hash) <span class="kw">=&gt;</span> {</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> newUser <span class="op">=</span> <span class="kw">new</span> <span class="fu">User</span>({</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>                <span class="dt">email</span><span class="op">:</span> req<span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">email</span><span class="op">,</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                <span class="dt">password</span><span class="op">:</span> hash</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>            })<span class="op">;</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>            newUser<span class="op">.</span><span class="fu">save</span>()<span class="op">.</span><span class="fu">then</span>(result <span class="kw">=&gt;</span> {</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                <span class="co">//Delete the password after saved</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>                newUser<span class="op">.</span><span class="at">password</span> <span class="op">=</span> <span class="st">&quot;SECRET&quot;</span><span class="op">;</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>                res<span class="op">.</span><span class="fu">status</span>(<span class="dv">200</span>)</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">result</span><span class="op">:</span> result})<span class="op">;</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>            })<span class="op">.</span><span class="fu">catch</span>(error <span class="kw">=&gt;</span> {</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>                res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> error})<span class="op">;</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>            })<span class="op">;</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    }    </span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
             <p>If you send a valid email and password, you will get the
             result, but with the password changed to “SECRET”, for
             security reasons:</p>
@@ -445,7 +450,7 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             Postman</figcaption>
             </figure>
             <p>You can check that the password has been stored hashed in
-            mongosh:</p>
+            <em>mongosh</em>:</p>
             <div class="sourceCode" id="cb13"><pre
             class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>contacts<span class="op">&gt;</span> db<span class="op">.</span><span class="at">users</span><span class="op">.</span><span class="fu">find</span>({<span class="dt">email</span><span class="op">:</span> <span class="st">&quot;mike@mail.com&quot;</span>})</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>[</span>
@@ -461,13 +466,13 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             class="header-section-number">2.2.3</span> Users
             authentication</h3>
             <p>To generate JWT token we will need the <a
-            href="https://www.npmjs.com/package/jsonwebtoken">jsonwebtoken
+            href="https://www.npmjs.com/package/jsonwebtoken"><strong>jsonwebtoken</strong>
             library</a>. As the library requires a secret token to sign
             the token, we also need the <a
-            href="https://www.npmjs.com/package/dotenv">dotenv
-            library</a> in order to store it a in a separate
+            href="https://www.npmjs.com/package/dotenv"><strong>dotenv</strong>
+            library</a> in order to store it in a separate
             <code>.env</code> file (this file should be in your
-            <code>.gitignore</code> file so as to maintain i secret).
+            <code>.gitignore</code> file so as to maintain it secret).
             First, we install the modules:</p>
             <div class="sourceCode" id="cb14"><pre
             class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install dotenv jsonwebtoken</span></code></pre></div>
@@ -481,8 +486,8 @@ class="toc-section-number">2.3</span> Authorization</a></li>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Get config vars</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>dotenv<span class="op">.</span><span class="fu">config</span>()<span class="op">;</span></span></code></pre></div>
-            <p>To generate a secret token, you can do a script with the
-            command:</p>
+            <p>As a simple method to generate a secret token, you can do
+            a separate script with the command:</p>
             <div class="sourceCode" id="cb16"><pre
             class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">// generateSecret.js</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">require</span>(<span class="st">&#39;crypto&#39;</span>)<span class="op">.</span><span class="fu">randomBytes</span>(<span class="dv">64</span>)<span class="op">.</span><span class="fu">toString</span>(<span class="st">&#39;hex&#39;</span>))<span class="op">;</span></span></code></pre></div>
@@ -494,13 +499,14 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">//.env</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>TOKEN_SECRET<span class="op">=</span><span class="dv">7</span><span class="er">db218ad0b4fcfb58f9e4f</span><span class="op">....</span></span></code></pre></div>
             <p>We will do a function to generate the tokens in
-            users.js:</p>
+            <code>users.js</code>:</p>
             <div class="sourceCode" id="cb18"><pre
             class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> generateToken <span class="op">=</span> login <span class="kw">=&gt;</span> {</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jwt<span class="op">.</span><span class="fu">sign</span>({<span class="dt">login</span><span class="op">:</span> login}<span class="op">,</span> <span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">TOKEN_SECRET</span><span class="op">,</span> {<span class="dt">expiresIn</span><span class="op">:</span> <span class="st">&quot;1 hours&quot;</span>})<span class="op">;</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
-            <p>We pass the login field, the secret token stored in
-            <code>.env</code> and a duration of 1 hour.</p>
+            <p>We pass the login parameter (in our case it will be the
+            user’s email), the secret token stored in <code>.env</code>
+            and a duration of 1 hour.</p>
             <p>Time to do the POST <code>/login</code> route. First, we
             get the POST parameters email and password. Then, check if
             the user identified by its email exists. If so, use the
@@ -508,26 +514,34 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             password is correct and then, generate a token with the
             email as login field:</p>
             <div class="sourceCode" id="cb19"><pre
-            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Login</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">post</span>(<span class="st">&#39;/login&#39;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> plainPassword <span class="op">=</span> req<span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">password</span><span class="op">;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> email <span class="op">=</span> req<span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">email</span><span class="op">;</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    User<span class="op">.</span><span class="fu">findOne</span>({<span class="dt">email</span><span class="op">:</span> email})</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(result <span class="kw">=&gt;</span> {</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ( bcrypt<span class="op">.</span><span class="fu">compareSync</span>(plainPassword<span class="op">,</span> result<span class="op">.</span><span class="at">password</span>) ){</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>            res<span class="op">.</span><span class="fu">status</span>(<span class="dv">200</span>)</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">token</span><span class="op">:</span> <span class="fu">generateToken</span>(email)})<span class="op">;</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>            res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;Wrong password&quot;</span>})<span class="op">;</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">catch</span>(error <span class="kw">=&gt;</span> {</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>        res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;User not found&quot;</span>})<span class="op">;</span></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">// routes/users.js</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">//Login</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">post</span>(<span class="st">&#39;/login&#39;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> plainPassword <span class="op">=</span> req<span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">password</span><span class="op">;</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> email <span class="op">=</span> req<span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">email</span><span class="op">;</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    User<span class="op">.</span><span class="fu">findOne</span>({<span class="dt">email</span><span class="op">:</span> email})</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(result <span class="kw">=&gt;</span> {</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(result) {           </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> ( bcrypt<span class="op">.</span><span class="fu">compareSync</span>(plainPassword<span class="op">,</span> result<span class="op">.</span><span class="at">password</span>) ){</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>                res<span class="op">.</span><span class="fu">status</span>(<span class="dv">200</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">token</span><span class="op">:</span> <span class="fu">generateToken</span>(email)})<span class="op">;</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>            } <span class="cf">else</span> {</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>                res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;Wrong password&quot;</span>})<span class="op">;</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>            res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;User not found&quot;</span>})<span class="op">;</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">catch</span>(error <span class="kw">=&gt;</span> {</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>        res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;Login error: &quot;</span> <span class="op">+</span> error})<span class="op">;</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
             <blockquote>
             <p>NOTE: In a real application, it’s not recommendable to
             use different message for “User not found” and “Wrong
@@ -554,14 +568,14 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             <code>user</code>. Can access to all the GET routes.</li>
             <li><strong>Admin users</strong> with the role
             <code>admin</code>. Can access to all the GET, POST, PUT and
-            DELETE routes. This is to say, only admin users can modify
-            the database data.</li>
+            DELETE routes. It is to say, only admin users can modify the
+            database data.</li>
             </ul>
-            <p>First of all, we need at least an user with the
+            <p>First of all, we need at least a user with the
             <code>admin</code> role, because the default role
             <code>user</code> is assigned to all the registered users.
-            We can modify directly the database in mongosh and assign
-            the role <code>admin</code> to the user you want:</p>
+            We can modify directly the database in <em>mongosh</em> and
+            assign the role <code>admin</code> to the user you want:</p>
             <div class="sourceCode" id="cb20"><pre
             class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">db.users.updateOne</span><span class="er">(</span><span class="ex">{email:</span> <span class="st">&quot;admin@mail.com&quot;</span>}, {<span class="va">$set</span>: {role: <span class="st">&#39;admin&#39;</span>} }<span class="kw">)</span></span></code></pre></div>
             <p>To do the authentication we are going to do a custom
@@ -571,14 +585,14 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             named <code>protectRoute</code>. This function take a role
             as parameter and check its value:</p>
             <ul>
-            <li>If <code>role</code> is <strong>““</strong> the user has
-            access.</li>
+            <li>If <code>role</code> is <strong>““</strong> (empty
+            string) the user has access.</li>
             <li>If <code>role</code> is different from ““, retrieve the
             user’s email from the token and search for it in the users
             collection. If the user’s rol is <code>admin</code>, the
             user has access. Otherwise, check if the value of the
             <code>role</code> parameters matches the value of the user’s
-            role.</li>
+            stored role.</li>
             </ul>
             <p>For instance, if we pass the parameter “user” to the
             function, it will grant access to the route for the users
@@ -586,48 +600,53 @@ class="toc-section-number">2.3</span> Authorization</a></li>
             <p>The <code>authorization.js</code> script and the function
             <code>protectRoute</code> can be as follow:</p>
             <div class="sourceCode" id="cb21"><pre
-            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> jwt <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;jsonwebtoken&#39;</span>)<span class="op">;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> dotenv <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;dotenv&#39;</span>)<span class="op">;</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Get config vars</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>dotenv<span class="op">.</span><span class="fu">config</span>()<span class="op">;</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> User <span class="op">=</span> <span class="pp">require</span>(<span class="bu">__dirname</span> <span class="op">+</span> <span class="st">&#39;/models/user.js&#39;</span>)<span class="op">;</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> protectRoute <span class="op">=</span> role <span class="kw">=&gt;</span> {</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> {</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> token <span class="op">=</span> req<span class="op">.</span><span class="at">headers</span>[<span class="st">&#39;authorization&#39;</span>]<span class="op">;</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (token) {</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>            <span class="co">//We omit the &quot;Bearer &quot; part</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>            token <span class="op">=</span> token<span class="op">.</span><span class="fu">substring</span>(<span class="dv">7</span>)<span class="op">;</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> result <span class="op">=</span> jwt<span class="op">.</span><span class="fu">verify</span>(token<span class="op">,</span> <span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">TOKEN_SECRET</span>)<span class="op">;</span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>            User<span class="op">.</span><span class="fu">findOne</span>({<span class="dt">email</span><span class="op">:</span> result<span class="op">.</span><span class="at">login</span>})</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">then</span>(result <span class="kw">=&gt;</span> {</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> (result <span class="op">&amp;&amp;</span> (role <span class="op">===</span> <span class="st">&quot;&quot;</span> <span class="op">||</span> result<span class="op">.</span><span class="at">role</span> <span class="op">===</span> <span class="st">&quot;admin&quot;</span> <span class="op">||</span> role <span class="op">===</span> result<span class="op">.</span><span class="at">role</span>))</span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">next</span>()<span class="op">;</span></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span></span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>                    res<span class="op">.</span><span class="fu">status</span>(<span class="dv">401</span>)</span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;Unauthorized user&quot;</span>})<span class="op">;</span>  </span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>            })<span class="op">.</span><span class="fu">catch</span>(error <span class="kw">=&gt;</span> {</span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>                res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)</span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;User not found&quot;</span>})<span class="op">;</span></span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>            })<span class="op">;</span></span>
-<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>                  </span>
-<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> </span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>            res<span class="op">.</span><span class="fu">status</span>(<span class="dv">401</span>)</span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;Unauthorized user&quot;</span>})<span class="op">;</span>        </span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
-<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>exports<span class="op">.</span><span class="at">protectRoute</span> <span class="op">=</span> protectRoute<span class="op">;</span></span></code></pre></div>
-            <p>As you can see, que get the token omitting the first 7
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">// authorization.js</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> jwt <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;jsonwebtoken&#39;</span>)<span class="op">;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> dotenv <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;dotenv&#39;</span>)<span class="op">;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Get config vars</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>dotenv<span class="op">.</span><span class="fu">config</span>()<span class="op">;</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> User <span class="op">=</span> <span class="pp">require</span>(<span class="bu">__dirname</span> <span class="op">+</span> <span class="st">&#39;/models/user.js&#39;</span>)<span class="op">;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> protectRoute <span class="op">=</span> role <span class="kw">=&gt;</span> {</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> {</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> token <span class="op">=</span> req<span class="op">.</span><span class="at">headers</span>[<span class="st">&#39;authorization&#39;</span>]<span class="op">;</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (token) {</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>            <span class="co">//Omit the &quot;Bearer &quot; part</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>            token <span class="op">=</span> token<span class="op">.</span><span class="fu">substring</span>(<span class="dv">7</span>)<span class="op">;</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>            <span class="co">//Verify the token</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> result <span class="op">=</span> jwt<span class="op">.</span><span class="fu">verify</span>(token<span class="op">,</span> <span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">TOKEN_SECRET</span>)<span class="op">;</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>            <span class="co">//Find the token&#39;s user</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>            User<span class="op">.</span><span class="fu">findOne</span>({<span class="dt">email</span><span class="op">:</span> result<span class="op">.</span><span class="at">login</span>})</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">then</span>(result <span class="kw">=&gt;</span> {</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> (result <span class="op">&amp;&amp;</span> (role <span class="op">===</span> <span class="st">&quot;&quot;</span> <span class="op">||</span> result<span class="op">.</span><span class="at">role</span> <span class="op">===</span> <span class="st">&quot;admin&quot;</span> <span class="op">||</span> role <span class="op">===</span> result<span class="op">.</span><span class="at">role</span>))</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">next</span>()<span class="op">;</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>                    res<span class="op">.</span><span class="fu">status</span>(<span class="dv">401</span>)</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>                        <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;Unauthorized user&quot;</span>})<span class="op">;</span>  </span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>            })<span class="op">.</span><span class="fu">catch</span>(error <span class="kw">=&gt;</span> {</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>                res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> error})<span class="op">;</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>            })<span class="op">;</span>                  </span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> </span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>            res<span class="op">.</span><span class="fu">status</span>(<span class="dv">401</span>)</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">send</span>({<span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">error</span><span class="op">:</span> <span class="st">&quot;Unauthorized user&quot;</span>})<span class="op">;</span>        </span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>exports<span class="op">.</span><span class="at">protectRoute</span> <span class="op">=</span> protectRoute<span class="op">;</span></span></code></pre></div>
+            <p>As you can see, we get the token omitting the first 7
             characters of the authorization header and verify it with
-            the <code>jwt.verify</code> function.</p>
+            the <code>jwt.verify</code> function. Once the token has
+            been verified, we extract the user and search fot it in the
+            database, allowing access based on the rules previously
+            explained.</p>
             <p>Now, we can use the <code>protectRoute</code> function in
             our routes. First, we need to import the script:</p>
             <div class="sourceCode" id="cb22"><pre
             class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">// routes/contacts.js</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> {protectRoute} <span class="op">=</span> <span class="pp">require</span>(<span class="bu">__dirname</span> <span class="op">+</span> <span class="st">&quot;/../authorization&quot;</span>)<span class="op">;</span></span></code></pre></div>
-            <p>And now, we can use the middleware as argument in the
+            <p>And then, we can use the middleware as argument in the
             routes. For instance in <code>contacts.js</code>:</p>
             <div class="sourceCode" id="cb23"><pre
             class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">// routes/contacts.js</span></span>
